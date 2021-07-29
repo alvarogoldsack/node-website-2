@@ -9,6 +9,7 @@ const model = require('./../../models/usuarios');
 const create = async (req, res) => {
     console.log(req.body, req.file);
     const idImg = await service.createUsuario(req.body, req.file);
+    console.log(idImg);
     res.redirect('/admin/usuarios');
 }
 const getAll = async (req, res) => {

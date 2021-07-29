@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const model = require('./../models/usuarios');
+const config = { dest: './public/tmp'};
+const upload = multer(config);
 const sha1 = require('sha1');
 const {v4: uuid} = require('uuid');
 const service  = require('./../services/usuarios');
@@ -10,6 +12,7 @@ const showRegistro = (req, res) => {
     res.render('registro');
 }
 const create = async (req, res) => {
+    console.log(req.body, req.file);
     const idImg = await service.createUsuario(req.body, req.file);
     const usuario = req.body;
     console.log(usuario);
@@ -44,7 +47,10 @@ const verify = async(req, res) => {
     const messageId = await model.verify(uid);
     res.redirect('/productos');
 }
+
+router.get('/', (req, res) => res.render('registro'));
 router.get('/', showRegistro);
-router.post('/create', create);
+router.post('/', upload.single("imagen"), create);
+router.post('/', create);
 router.get('/verify/:uid', verify);
 module.exports = router;

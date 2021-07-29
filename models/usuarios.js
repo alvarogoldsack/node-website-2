@@ -53,11 +53,9 @@ const auth = async(username, pass) => {
     return await pool.query(query, params);
 }
 
-const create = (obj) => 
-    pool.query("INSERT INTO ?? SET ?", [process.env.T_USUARIOS, obj]).then(response => response).catch(err => console.error(err));
+const create = (obj) => pool.query("INSERT INTO ?? SET ?", [process.env.T_USUARIOS, obj]).then(response => response).catch(err => console.error(err));
 
-const createImages = (obj) =>
-    pool.query("INSERT INTO ?? SET ?", [process.env.T_USUARIOSIMG, obj]).then(response => response).catch(err => console.error(err));
+const createImages = (obj) => pool.query("INSERT INTO ?? SET ?", [process.env.T_USUARIOSIMG, obj]).then(response => response).catch(err => console.error(err));
 
 const getSingle = async(id) => {
     const query = "SELECT u.id, u.username, d.uid AS imagen FROM ?? AS u JOIN ?? AS d ON u.id = d.id WHERE u.id = ? AND u.eliminado = 0";

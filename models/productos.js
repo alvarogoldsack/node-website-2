@@ -14,11 +14,12 @@ const getSingle = async(id) => {
     const rows = await pool.query(query, params);
     return rows;
 }
-const create = async(obj) => {
-    const query = "INSERT INTO ?? SET ?";
-    const params = [process.env.T_PRODUCTOS, obj];
-    return await pool.query(query, params);
-}
+const create = (obj) => 
+    pool.query("INSERT INTO ?? SET ?", [process.env.T_PRODUCTOS, obj]).then(response => response).catch(err => console.error(err));
+
+const createImages = (obj) =>
+    pool.query("INSERT INTO ?? SET ?", [process.env.T_PRODUCTOSIMG, obj]).then(response => response).catch(err => console.error(err));
+
 const update = async(id, obj) => {
     const query = "UPDATE ?? SET ? WHERE id = ?";
     const params = [process.env.T_PRODUCTOS, obj, id];
@@ -33,4 +34,4 @@ const del = async(id) => {
 
 
 
-module.exports = {getAll, getSingle, create, update, del}
+module.exports = {getAll, getSingle, create, update, del, createImages}
