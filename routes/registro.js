@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const model = require('./../models/usuarios');
 const config = { dest: './public/tmp'};
+const multer = require('multer');
 const upload = multer(config);
 const sha1 = require('sha1');
 const {v4: uuid} = require('uuid');
@@ -12,9 +13,8 @@ const showRegistro = (req, res) => {
     res.render('registro');
 }
 const create = async (req, res) => {
-    console.log(req.body, req.file);
-    const idImg = await service.createUsuario(req.body, req.file);
     const usuario = req.body;
+    const idImg = await service.createUsuario(req.body, req.file);
     console.log(usuario);
     const uid = uuid();
     console.log(uid)
@@ -48,9 +48,8 @@ const verify = async(req, res) => {
     res.redirect('/productos');
 }
 
-router.get('/', (req, res) => res.render('registro'));
+router.get('/create', (req, res) => res.render('registro'));
 router.get('/', showRegistro);
-router.post('/', upload.single("imagen"), create);
-router.post('/', create);
+router.post('/create', upload.single("imagen"), create);
 router.get('/verify/:uid', verify);
 module.exports = router;
