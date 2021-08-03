@@ -24,7 +24,7 @@ const getSingle = async(id) => {
 
 const all = async() => {
     try {
-        const query = "SELECT u.id, u.username, uI.uid AS uuid FROM usuarios AS u JOIN usuarios_imagenes AS uI ON u.id = uI.id_usuario WHERE u.eliminado = 0";
+        const query = "SELECT u.id, u.username, uI.uid AS uuid FROM usuarios AS u JOIN usuarios_imagenes AS uI ON u.id = uI.id_usuario WHERE u.eliminado = 0 AND u.habilitado = 1";
         return await pool.query(query);
     } catch (error) {
         console.error(error);

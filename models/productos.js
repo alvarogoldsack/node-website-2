@@ -1,13 +1,23 @@
 const pool = require('./../utils/bd');
 
+// const getAll = async() => {
+//     const query = "SELECT p.id, p.nombre, p.descripcion, FROM ?? AS p WHERE p.eliminado = 0";
+//     // ?? == nombre de tabla ? == cualquier otra variable
+//     const params = [process.env.T_PRODUCTOS];
+//     // T_PRODUCTOS = "productos", T_CATEGORIAS = "categorias", T_USUARIOS = "usuarios"
+//     const rows = await pool.query(query, params);
+//     return rows;
+// }
+
 const getAll = async() => {
-    const query = "SELECT p.id, p.nombre, p.descripcion, FROM ?? AS p WHERE p.eliminado = 0";
-    // ?? == nombre de tabla ? == cualquier otra variable
-    const params = [process.env.T_PRODUCTOS];
-    // T_PRODUCTOS = "productos", T_CATEGORIAS = "categorias", T_USUARIOS = "usuarios"
-    const rows = await pool.query(query, params);
-    return rows;
+    try {
+        const query = "SELECT p.nombre, p.descripcion, pI.uid AS uuid FROM productos AS p JOIN productos_imagenes AS pI ON p.id = pI.id_producto WHERE p.eliminado = 0";
+        return await pool.query(query);
+    } catch (error) {
+        console.error(error);
+    }
 }
+
 const getSingle = async(id) => {
     const query = "SELECT p.id, p.nombre, p.descripcion FROM ?? AS p  WHERE p.id = ? AND p.eliminado = 0";
     const params = [process.env.T_PRODUCTOS, id];

@@ -31,8 +31,8 @@ const create = async (req, res) => {
     //         res.render('registro', {message: "el nombre de usuario y/o mail ingresado ya existe"})
     //     }
     // })
-    const agregado = await model.create(usuarioFinal);
-    console.log(agregado);
+    // const agregado = await model.create(usuarioFinal);
+    // console.log(agregado);
     send({
         mail : usuarioFinal.mail, 
         cuerpo:

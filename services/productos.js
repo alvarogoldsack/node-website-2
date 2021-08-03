@@ -3,9 +3,9 @@ const {imgFile} = require("./../utils/fileHandler");
 
 const createProducto = async(body, file) => {
     try {
-        const {insertId : id_Producto} = await create(body);
+        const {insertId : id_producto} = await create(body);
         const uid = imgFile(file);
-        const obj = {id_Producto, uid};
+        const obj = {id_producto, uid};
         const {insertId : idImg} = await createImages(obj);
         return idImg;
     } catch (error) {
@@ -16,7 +16,7 @@ const createProducto = async(body, file) => {
 
 const updateProducto = async(id, body, file) => {
     try {
-        const id_Producto = await update(id,body);
+        const id_producto = await update(id,body);
         if (file){
             const uid = imgFile(file);
             const obj = {uid};
