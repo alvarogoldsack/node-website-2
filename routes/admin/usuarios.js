@@ -13,9 +13,9 @@ const create = async (req, res) => {
     res.redirect('/admin/usuarios');
 }
 const getAll = async (req, res) => {
-    const Usuarios = await model.all();
-    console.log(Usuarios);
-    res.render('usuariosAdmin', {usuarios})
+    const usuarios = await model.all();
+    console.log(usuarios);
+    res.render('adminUsuarios', {usuarios})
 }
 const update = async (req, res) => {
     const idImg = await service.updateUsuario(req.params.id, req.body, req.file);

@@ -1,5 +1,4 @@
-<!DOCTYPE hbs>
-<hbs  >
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +8,7 @@
   <meta name="description" content="">
   
   
-  <title>Usuarios ABM</title>
+  <title>Usuarios</title>
   <link rel="stylesheet" href="assets/tether/tether.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
@@ -27,14 +26,14 @@
 </head>
 <body>
   
-  <section class="menu menu1 cid-sDOMz2cUz1" once="menu" id="menu1-17">
+  <section class="menu menu1 cid-sDJzYcKj54" once="menu" id="menu1-x">
     
 
     <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
         <div class="container">
             <div class="navbar-brand">
                 
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-7" href="https://mobiri.se">Goldsack Electrodomésticos</a></span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-7">Goldsack Electrodomésticos</a></span>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="hamburger">
@@ -45,18 +44,17 @@
                 </div>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="login.hbs">Logueate</a></li>
-                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="registro.hbs">Registro</a></li>
-                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="inde.hbs">Productos</a>
-                    </li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="usuarios.hbs">Usuarios</a></li></ul>
-                
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="/login">Logueate</a></li>
+                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="/registro">Registro</a></li>
+                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="http://localhost:3000">Productos</a>
+                    </li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="/usuarios">Usuarios</a></li></ul>
                 
             </div>
         </div>
     </nav>
 </section>
 
-<section class="team1 cid-sDOMz2wbWE" id="team1-18">
+<section class="team1 cid-sDJEspFIZv" id="team1-z">
     
 
     
@@ -67,27 +65,29 @@
                     <strong>Usuarios</strong></h3>
                 
             </div>
+            {{#each usuarios}}
             <div class="col-sm-6 col-lg-4">
                 <div class="card-wrap">
                     <div class="image-wrap">
-                        <img src="assets/images/team1.jpg">
+                        <img src="/images/{{uuid}}" alt="No hay imagen">
                     </div>
                     <div class="content-wrap">
                         <h5 class="mbr-section-title card-title mbr-fonts-style align-center m-0 display-5">
-                            <strong>John Smith</strong>
+                            <strong>{{username}}</strong>
                         </h5>
                         <h6 class="mbr-role mbr-fonts-style align-center mb-3 display-4">
-                            <strong>Programmer</strong>
+                            <strong> ID: {{id}}</strong>
                         </h6>
-                        <p class="card-text mbr-fonts-style align-center display-7">
-                            No special actions required, all sites you make with Mobirise are mobile-friendly.
-                        </p>
-                        
-                        
+                        <div style="text-align: center">
+                        <a href="/admin/usuarios/update/{{id}}" class="btn btn-primary"><i class="fas fa-edit"></i>
+                        Editar</a>
+                        <a href="/admin/usuarios/delete/{{id}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>
+                        Eliminar</a>  
+                        </div>            
                     </div>
                 </div>
             </div>
-
+            {{/each}}
             
 
             
@@ -97,7 +97,7 @@
     </div>
 </section>
 
-<section class="footer3 cid-sDOMz3fEp7" once="footers" id="footer3-19">
+<section class="footer3 cid-sDOMz3fEp7" once="footers" id="footer3-1b">
 
     
 
@@ -123,19 +123,19 @@
                     
                     
                 <div class="soc-item">
-                        <a href="https://twitter.com/mobirise" target="_blank">
+                        <a href="https://twitter.com/alvarosuki" target="_blank">
                             <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
                         </a>
                     </div><div class="soc-item">
-                        <a href="https://www.facebook.com/pages/Mobirise/1616226671953247" target="_blank">
+                        <a href="https://www.facebook.com/alvaromanuel.altamirnda1/" target="_blank">
                             <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
                         </a>
                     </div><div class="soc-item">
-                        <a href="https://www.youtube.com/c/mobirise" target="_blank">
+                        <a href="https://www.youtube.com/channel/UC9l9d4AvV0U5jH_wDiRLciw" target="_blank">
                             <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
                         </a>
                     </div><div class="soc-item">
-                        <a href="https://instagram.com/mobirise" target="_blank">
+                        <a href="https://www.instagram.com/_goldsack/" target="_blank">
                             <span class="mbr-iconfont mbr-iconfont-social socicon-instagram socicon"></span>
                         </a>
                     </div></div>
@@ -146,8 +146,7 @@
             </div>
         </div>
     </div>
-</section><section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;"><a href="https://mobirise.site/p" style="flex: 1 1; height: 3rem; padding-left: 1rem;"></a><p style="flex: 0 0 auto; margin:0; padding-right:1rem;">Site <a href="https://mobirise.site/f" style="color:#aaa;">was started</a> with Mobirise</p></section><script src="assets/web/assets/jquery/jquery.min.js"></script>  <script src="assets/popper/popper.min.js"></script>  <script src="assets/tether/tether.min.js"></script>  <script src="assets/bootstrap/js/bootstrap.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/dropdown/js/nav-dropdown.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>  <script src="assets/theme/js/script.js"></script>  
+</section><section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;"><a href="https://mobirise.site/n" style="flex: 1 1; height: 3rem; padding-left: 1rem;"></a><p style="flex: 0 0 auto; margin:0; padding-right:1rem;"><a href="" style="color:#aaa;"></a> </p></section><script src="assets/web/assets/jquery/jquery.min.js"></script>  <script src="assets/popper/popper.min.js"></script>  <script src="assets/tether/tether.min.js"></script>  <script src="assets/bootstrap/js/bootstrap.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/dropdown/js/nav-dropdown.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>  <script src="assets/theme/js/script.js"></script>  
   
   
 </body>
-</hbs>

@@ -1,39 +1,13 @@
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v5.3.10, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
-  <meta name="description" content="">
   
-  
-  <title>Logueate</title>
-  <link rel="stylesheet" href="assets/tether/tether.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/socicon/css/styles.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-  
-  
-  
-  
-</head>
-<body>
-  
-  <section class="menu menu1 cid-sDJzYcKj54" once="menu" id="menu1-r">
+  <section class="menu menu1 cid-sDJzYcKj54" once="menu" id="menu1-q">
     
 
     <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
         <div class="container">
             <div class="navbar-brand">
                 
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-7" >Goldsack Electrodomésticos</a></span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-7">Goldsack Electrodomésticos</a></span>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="hamburger">
@@ -55,46 +29,51 @@
     </nav>
 </section>
 
-<section class="form4 cid-sDJAzYoPuT mbr-fullscreen" id="form4-t">
-
-    
-
-    
-
-    <div class="container">
-        <div class="row content-wrapper justify-content-center">
-            <div class="col-lg-3 offset-lg-1 mbr-form">
-                <form action="/login" method="POST" class="mbr-form form-with-styler">
-                    <div class="row">
-                        
-                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops...! some
-                            problem!</div>
-                    </div>
-                    <div class="dragArea row">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <h1 class="mbr-section-title mb-4 display-2"><strong>Logueate</strong></h1>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <p class="mbr-text mbr-fonts-style mb-4 display-7">Ingresá tu nombre de usuario y tu contraseña.</p>
-                        </div>
-                        <div class="col-lg-12 col-md col-12 form-group" data-for="name">
-                            <input type="text" name="username" id="username" placeholder="Nombre" data-form-field="name" class="form-control">
-                        </div>
-                        <div class="col-lg-12 col-md col-12 form-group" data-for="password">
-                            <input type="password" name="pass" id="pass" placeholder="Contraseña" data-form-field="email" class="form-control">
-                        </div>
-                        <div class="col-12 col-md-auto mbr-section-btn"><button type="submit" class="btn btn-warning display-4">Ingresar</button></div>
-                    </div>
-                </form>
-                <p class="text-danger">{{message}}</p>
-            </div>
-            <div class="col-lg-7 offset-lg-1 col-12">
+    <div class="container" style="margin-top: 40px">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-6">
                 <div class="image-wrapper">
-                    <img class="w-100" src="assets/images/ghoo-1200x1200.png" alt="Mobirise">
+                    <a href="/admin/productos/create"><img src="/images/ico.png" alt="no hay imagen"  ></a>
+                    <p class="mbr-description mbr-fonts-style pt-2 align-center display-4"></p>
+                </div>
+            </div>
+            <div class="col-12 col-lg">
+                <div class="text-wrapper">
+                    <h3 class="mbr-section-title mbr-fonts-style mb-3 display-5">
+                        <strong>Agregar</strong></h3>
+                    <p class="mbr-text mbr-fonts-style display-7">
+                          Agrega un nuevo producto a la página.</p>
                 </div>
             </div>
         </div>
     </div>
+    
+{{#each productos}}
+    <div class="container" style="margin-top: 40px">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-6">
+                <div class="image-wrapper">
+                    <img src="/images/{{uuid}}" alt="no hay imagen"  >
+                    <p class="mbr-description mbr-fonts-style pt-2 align-center display-4"></p>
+                </div>
+            </div>
+            <div class="col-12 col-lg">
+                <div class="text-wrapper">
+                    <h3 class="mbr-section-title mbr-fonts-style mb-3 display-5">
+                        <strong>{{nombre}}</strong></h3>
+                    <p class="mbr-text mbr-fonts-style display-7">
+                          {{descripcion}}</p>
+                          <a href="/admin/productos/update/{{id}}" class="btn btn-primary"><i class="fas fa-edit"></i>
+                        Editar</a>
+                <a href="/admin/productos/delete/{{id}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>
+                        Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/each}}
+
+
 </section>
 
 <section class="footer3 cid-sDOMz3fEp7" once="footers" id="footer3-1b">

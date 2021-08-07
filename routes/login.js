@@ -8,7 +8,7 @@ const showLogin = (req, res) => res.render('login', {message : ''});
 
 const login = async (req, res) => {
     let {username, pass} = req.body;
-    // pass = sha1(pass);
+    pass = sha1(pass);
     const logged = await auth(username, pass);
     if (logged.length === 0) {
         res.render('login', {message: 'Usuario o pass incorrectos'});
@@ -17,8 +17,11 @@ const login = async (req, res) => {
         const [{id, admin}] = logged;
         req.session.user = id;
         req.session.admin = admin;
+        if (req.session.admin == 1){
+            res.redirect('/admin');}
+        else{
         res.redirect('/usuarios');
-
+        }
     }
 }
 

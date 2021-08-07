@@ -1,20 +1,29 @@
-const Joi = require('@hapi/joi'); 
+const Joi = require('@hapi/joi'); //npm i @hapi/joi.js
 
-const schemas = { 
+const schemas = {
     login: Joi.object().keys({
         username: Joi.string().required().messages({
-            "string.empty" : "El nombre de usuario no puede estar vacío"
+            "string.empty": "El nombre de usuario es obligatorio"
         }),
-        pass: Joi.string().required().min(3).max(20).messages({
-            "string.empty" : "El pass no puede estar vacío",
-            "string.min" : "El pass tiene que tener como mínimo 3 caracteres"
+        pass: Joi.string().min(3).max(20).required().messages({
+            "string.empty" : "La contraseña es obligatoria",
+            "string.min" : "La contraseña tiene que tener como minimo 3 caracteres",
+            "string.max" : "La contraseña puede tener como maximo 20 caracteres"
         }),
     }),
     registro: Joi.object().keys({
-        username: Joi.string().required(),
-        pass: Joi.string().required().min(3).max(20),
-        mail: Joi.string().email().required(),
-    })
+        username: Joi.string().required().messages({
+            "string.empty": "El nombre de usuario es obligatorio"
+        }),
+        mail: Joi.string().email().required().messages({
+            "string.empty": "El correo es no puede estar vacío"
+        }),
+        pass: Joi.string().min(3).max(20).required().messages({
+            "string.empty": "La contraseña es obligatoria",
+            "string.min" : "La contraseña tiene que tener como minimo 3 caracteres",
+            "string.max" : "La contraseña puede tener como maximo 20 caracteres"
+        }),
+    }),
 }
 
 module.exports = {schemas};
