@@ -20,29 +20,27 @@ const create = async (req, res) => {
     // console.log(insertId);
     res.redirect('http://localhost:3000');
 }
-const update = async (req, res) => {
-    const {id} = req.params;
-    const producto = req.body;
-    console.log(producto);
-    const {insertId} = await model.update(id, producto);
-    console.log(insertId);
-    res.redirect('/admin/productos');
-}
-const showUpdate = async (req, res) => {
-    const {id} = req.params;
-    const [producto] = await model.getSingle(id);
-    res.render('updateProducto', {producto});
-}
 const del = async (req, res) => {
     const {id} = req.params;
-    const {insertId} = await model.del(id);
-    console.log(insertId);
+    const msgProductos = await model.del(id);
+    const msgImagen = await model.delImg(id);
     res.redirect('/admin/productos');
 }
-router.get('/create', (req, res) => res.render('createProducto'))
-router.get('/', get);
+const getUpdate = async (req, res) => {
+    const [producto] = await model.getSingle(req.params.id);
+    console.log(producto);
+    res.render('productosUpdate', {producto})
+}
+const update = async (req, res) => {
+    console.log(req.body, req.file);
+    const idImg = await service.updateProducto(req.params.id, req.body, req.file);
+    console.log(idImg);
+    res.redirect('/admin/productos');
+}
+router.get('/create', (req, res) => res.render('createProducto'));
 router.post('/create', upload.single("imagen"), create);
 router.post('/update/:id', upload.single("imagen"), update);
-router.get('/update/:id', showUpdate);
+router.get('/', get);
+router.get('/update/:id', getUpdate);
 router.get('/delete/:id', del);
 module.exports = router;

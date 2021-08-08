@@ -16,10 +16,13 @@ const create = (obj) => pool.query("INSERT INTO ?? SET ?", [process.env.T_USUARI
 const createImages = (obj) => pool.query("INSERT INTO ?? SET ?", [process.env.T_USUARIOSIMG, obj]).then(response => response).catch(err => console.error(err));
 
 const getSingle = async(id) => {
-    const query = "SELECT u.id, u.username, d.uid AS imagen FROM ?? AS u JOIN ?? AS d ON u.id = d.id WHERE u.id = ? AND u.eliminado = 0";
-    const params = [process.env.T_USUARIOS, process.env.T_USUARIOSIMG, id];
-    const rows = await pool.query(query, params);
-    return rows;
+    try {
+        const query = "SELECT u.id, u.username, u.mail, u.pass, uI.uid AS uuid FROM ?? AS u JOIN ?? AS uI ON u.id = uI.id_usuario WHERE u.eliminado = 0 AND u.id = ?";
+        const params = [process.env.T_USUARIOS, process.env.T_USUARIOSIMG, id];
+        return await pool.query(query, params);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 const all = async() => {
@@ -32,27 +35,43 @@ const all = async() => {
 }
 
 const update = async(id, obj) => {
-    const query = "UPDATE ?? SET ? WHERE id = ?";
-    const params = [process.env.T_USUARIOS, obj, id];
-    return await pool.query(query, params);
+    try {
+        const query = "UPDATE ?? SET ? WHERE id = ?";
+        const params = [process.env.T_USUARIOS, obj, id];
+        return await pool.query(query, params);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 const updateImg = async(id, obj) => {
-    const query = "UPDATE ?? SET ? WHERE id_usuario = ?";
-    const params = [process.env.T_USUARIOSIMG, obj, id];
-    return await pool.query(query, params);
+    try {
+        const query = "UPDATE ?? SET ? WHERE id_usuario = ?";
+        const params = [process.env.T_USUARIOSIMG, obj, id];
+        return await pool.query(query, params);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 const del = async(id) => {
-    const query = "UPDATE ?? SET eliminado = 1 WHERE id = ?";
-    const params = [process.env.T_USUARIOS, id];
-    return await pool.query(query, params);
+    try {
+        const query = "UPDATE ?? SET eliminado = 1 WHERE id = ?";
+        const params = [process.env.T_USUARIOS, id];
+        return await pool.query(query, params);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 const delImg = async(id) => {
-    const query = "UPDATE ?? SET eliminado = 1 WHERE id_usuario = ?";
-    const params = [process.env.T_USUARIOSIMG, id];
-    return await pool.query(query, params);
+    try {
+        const query = "UPDATE ?? SET eliminado = 1 WHERE id_usuario = ?";
+        const params = [process.env.T_USUARIOSIMG, id];
+        return await pool.query(query, params);
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 

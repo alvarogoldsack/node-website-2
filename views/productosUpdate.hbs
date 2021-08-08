@@ -8,13 +8,15 @@
   <meta name="description" content="">
   
   
-  <title>Index</title>
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <title>Crear un producto</title>
   <link rel="stylesheet" href="assets/tether/tether.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
   <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/formstyler/jquery.formstyler.css">
+  <link rel="stylesheet" href="assets/formstyler/jquery.formstyler.theme.css">
+  <link rel="stylesheet" href="assets/datepicker/jquery.datetimepicker.min.css">
   <link rel="stylesheet" href="assets/socicon/css/styles.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -27,14 +29,14 @@
 </head>
 <body>
   
-  <section class="menu menu1 cid-sDOMz2cUz1" once="menu" id="menu1-1a">
+  <section class="menu menu1 cid-sDJzYcKj54" once="menu" id="menu1-u">
     
 
     <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
         <div class="container">
             <div class="navbar-brand">
                 
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-7" href="https://mobiri.se">Goldsack Electrodomésticos</a></span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-7">Goldsack Electrodomésticos</a></span>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="hamburger">
@@ -50,49 +52,43 @@
                     <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="http://localhost:3000">Productos</a>
                     </li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="/usuarios">Usuarios</a></li></ul>
                 
-                
             </div>
         </div>
     </nav>
 </section>
 
-<section class="contacts1 cid-sDON0usYsC" id="contacts1-1d">
-
+<section class="form7 cid-sDJD1f0vR3" id="form7-w">
     
-
     
     <div class="container">
         <div class="mbr-section-head">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Índice</strong></h3>
-            <h4 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-2 display-5">Bienvenido, administrador.</div>
+            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+                <strong>Modificar un producto</strong></h3>
+            
         </div>
         <div class="row justify-content-center mt-4">
-            <div class="card col-12 col-lg-6">
-                <div class="card-wrapper">
-                    <div class="card-box align-center">
-                        <div class="image-wrapper">
-                            <a href="/admin/productos"><span class="mbr-iconfont mobi-mbri-edit mobi-mbri"></span></a>
-                        </div>
-                        <h4 class="card-title mbr-fonts-style mb-2 display-2">
-                            <strong>Productos ABM</strong></h4>
-                        <p class="mbr-text mbr-fonts-style mb-2 display-4">
-                            Agregar, Quitar o Modificar Productos</p>
-                        <h5 class="link mbr-fonts-style display-7"></h5>
+            <div class="col-lg-8 mx-auto mbr-form">
+                <form method="POST" action="/admin/productos/update/{{producto.id}}" enctype="multipart/form-data" class="mbr-form form-with-styler mx-auto">
+                    <p class="mbr-text mbr-fonts-style align-center mb-4 display-7">
+                        Ingresa los datos del producto.</p>
+                    <div class="row">
+                        
+                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Oops...! some
+                            problem!</div>
                     </div>
-                </div>
-            </div>
-            <div class="card col-12 col-lg-6">
-                <div class="card-wrapper">
-                    <div class="card-box align-center">
-                        <div class="image-wrapper">
-                            <a href="/admin/usuarios"><span class="mbr-iconfont mobi-mbri-hot-cup mobi-mbri"></span></a>
+                    <div class="dragArea row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="nombre">
+                            <input type="text" name="nombre" placeholder="Nombre" data-form-field="nombre" class="form-control" id="nombre" value="{{producto.nombre}}">
                         </div>
-                        <h4 class="card-title mbr-fonts-style align-center mb-2 display-2">
-                            <strong>Usuarios ABM</strong></h4>
-                        <p class="mbr-text mbr-fonts-style mb-2 display-4">Agregar, Quitar o Modificar Usuarios</p>
-                        <h5 class="link mbr-black mbr-fonts-style display-7"></h5>
+                        <div class="col-lg-12 col-md-12 col-sm-12 form-group" data-for="email">
+                            <input type="text" name="descripcion" placeholder="Descripción del producto" data-form-field="descripcion" class="form-control" id="descripcion" value="{{producto.descripcion}}">
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                            <input type="file" name="imagen" class="form-control" id="imagen">
+                        </div>
+                        <div class="col-auto mbr-section-btn align-center"><button type="submit" class="btn btn-warning display-4">Crear producto</button>{{message}}</div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

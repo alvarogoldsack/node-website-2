@@ -24,7 +24,7 @@ const updateProducto = async(id, body, file) => {
             return idImg;
         }
         else{
-            return id_Producto;
+            return id_producto;
         }
     } catch (error) {
         console.error(error);
