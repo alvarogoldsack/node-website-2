@@ -24,6 +24,14 @@ const schemas = {
             "string.max" : "La contraseña puede tener como maximo 20 caracteres"
         }),
     }),
+    createP: Joi.object().keys({
+        nombre: Joi.string().required().messages({
+            "string.empty": "El nombre del producto es obligatorio"
+        }),
+        descripcion: Joi.string().required().messages({
+            "string.empty": "Debe insertar una descripción"
+        }),
+    }),
 }
 
 module.exports = {schemas};

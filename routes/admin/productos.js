@@ -5,7 +5,7 @@ const config = { dest: './public/tmp'};
 const upload = multer(config);
 const service  = require('./../../services/productos');
 const model = require('./../../models/productos');
-
+const {validateProducto} = require('./../../middlewares/usuarios');
 
 const get = async(req,res) => {
     const productos = await model.getAll();
@@ -38,7 +38,7 @@ const update = async (req, res) => {
     res.redirect('/admin/productos');
 }
 router.get('/create', (req, res) => res.render('createProducto'));
-router.post('/create', upload.single("imagen"), create);
+router.post('/create', upload.single("imagen"), validateProducto, create);
 router.post('/update/:id', upload.single("imagen"), update);
 router.get('/', get);
 router.get('/update/:id', getUpdate);
